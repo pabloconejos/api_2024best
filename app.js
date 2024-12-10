@@ -21,6 +21,8 @@ export const createApp = ({Genius, GeniusController}) => {
   app.get('/', (req, res) => res.json({ okey: true }));
   app.get('/search', geniusController.getSearch);
   app.get('/song', geniusController.getSong);
+  app.get('/lyrics', geniusController.getLyrics);
+  app.get('/cover', geniusController.getCover);
 
 
   // Configuración del puerto
