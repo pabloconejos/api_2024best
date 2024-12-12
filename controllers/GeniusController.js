@@ -1,6 +1,7 @@
 
 import { getAlbumArt, getLyrics } from 'genius-lyrics-api';
 import { AUTHTOKEN } from '../config.js'
+import { responseExample } from '../utils/responseExample.js'
 
 export class GeniusController {
     constructor({ genius }) {
@@ -31,7 +32,6 @@ export class GeniusController {
 
     getSong = async (req, res) => {
         const searchTerm = req.query.id; // Obtiene el valor del parámetro 'q' en la URL
-        console.log(searchTerm)
         try {
             const response = await this.genius.artist('378195');
             res.json(response);
@@ -42,8 +42,8 @@ export class GeniusController {
     }
 
     getCover = async (req, res) => {
-        const {title, artist} = req.query
-        const options = this.createOptions('Buenas noches', 'quevedo');
+        const {artist, song} = req.query
+        const options = this.createOptions(song, artist);
         
         try {
             const cover = await getAlbumArt(options);
@@ -59,8 +59,8 @@ export class GeniusController {
     };
 
     getLyrics = async (req, res) => {
-        const {title, artist} = req.query
-        const options = this.createOptions('Buenas noches', 'quevedo');
+        const {artist, song} = req.query
+        const options = this.createOptions(song, artist);
         
         try {
             const lyrics = await getLyrics(options);
