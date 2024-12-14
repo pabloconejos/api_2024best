@@ -30,7 +30,6 @@ export class GeniusController {
 
     getSong = async (req, res) => {
         const {song} = req.query
-        console.log(song)
         try {
             const response = await this.genius.song(song);
             res.json(response);
@@ -63,7 +62,6 @@ export class GeniusController {
         
         try {
             const lyrics = await getLyrics(options);
-            console.log(lyrics)
             res.json({
                 artist: options.artist,
                 title: options.title,
