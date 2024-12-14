@@ -19,7 +19,6 @@ export class GeniusController {
   
     getSearch = async (req, res) => {
         const searchTerm = req.query.name; // Obtiene el valor del parámetro 'q' en la URL
-        console.log(searchTerm)
         try {
             // Realiza la búsqueda con el término de consulta
             const response = await this.genius.search(searchTerm);
@@ -31,9 +30,10 @@ export class GeniusController {
     };
 
     getSong = async (req, res) => {
-        const searchTerm = req.query.id; // Obtiene el valor del parámetro 'q' en la URL
+        const {song} = req.query
+        console.log(song)
         try {
-            const response = await this.genius.artist('378195');
+            const response = await this.genius.song(song);
             res.json(response);
         } catch (error) {
             console.error('Error fetching song data:', error);
@@ -64,6 +64,7 @@ export class GeniusController {
         
         try {
             const lyrics = await getLyrics(options);
+            console.log(lyrics)
             res.json({
                 artist: options.artist,
                 title: options.title,
