@@ -1,7 +1,6 @@
 
 import { getAlbumArt, getLyrics } from 'genius-lyrics-api';
 import { AUTHTOKEN } from '../config.js'
-import { responseExample } from '../utils/responseExample.js'
 
 export class GeniusController {
     constructor({ genius }) {
