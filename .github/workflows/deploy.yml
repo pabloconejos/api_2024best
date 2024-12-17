@@ -1,4 +1,4 @@
-name: Deploy Server to Vercel Action
+name: Deploy Node API to Vercel
 
 on:
   push:
@@ -6,15 +6,34 @@ on:
       - main
 
 jobs:
-  deploy-frontend:
+  deploy-api:
     runs-on: ubuntu-latest
     steps:
+      # Checkout the repository
       - uses: actions/checkout@v2
+
+      # Install Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18' # Cambia a la versión de Node.js que estés utilizando
+
+      # Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Install Vercel CLI
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
+
+      # Pull Vercel environment information
       - name: Pull Vercel Environment Information
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN_SERVER }}
-      - name: Build Project Artifacts
-        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN_SERVER }}
-      - name: Deploy Project Artifacts to Vercel
-        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN_SERVER }}
+
+      # Build the API (opcional si tienes scripts de build específicos)
+      - name: Build Project (if applicable)
+        run: npm run build
+
+      # Deploy to Vercel
+      - name: Deploy API to Vercel
+        run: vercel deploy --prod --token=${{ secrets.VERCEL_TOKEN_SERVER }}
