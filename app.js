@@ -1,6 +1,6 @@
 import express from 'express';
-import 'dotenv/config'; // Carga las variables de entorno
-import { AUTHTOKEN } from './config.js'
+import dotenv from 'dotenv';
+dotenv.config();
 import cors from 'cors'
 
 export const createApp = ({Genius, GeniusController}) => {
@@ -12,7 +12,7 @@ export const createApp = ({Genius, GeniusController}) => {
   }))
 
   // Inicializa la dependencia de Genius con la clave API
-  const genius = new Genius(AUTHTOKEN);
+  const genius = new Genius(process.env.AUTHTOKEN);
 
   // Crea el controlador con la dependencia inyectada
   const geniusController = new GeniusController({ genius });

@@ -1,6 +1,7 @@
 
 import { getAlbumArt, getLyrics } from 'genius-lyrics-api';
-import { AUTHTOKEN } from '../config.js'
+import dotenv from 'dotenv';
+dotenv.config();
 
 export class GeniusController {
     constructor({ genius }) {
@@ -9,7 +10,7 @@ export class GeniusController {
 
     createOptions(title, artist) {
         return {
-            apiKey: AUTHTOKEN,
+            apiKey: process.env.AUTHTOKEN,
             title: title,
             artist: artist,
             optimizeQuery: true
