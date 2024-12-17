@@ -18,7 +18,6 @@ pids
 # Configuración del entorno
 .env
 .env.test
-config.js
 
 # Directorios de build
 build/
