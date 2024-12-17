@@ -20,9 +20,8 @@ export class GeniusController {
     }
   
     getSearch = async (req, res) => {
-        const searchTerm = req.query.name; // Obtiene el valor del parámetro 'q' en la URL
+        const searchTerm = req.query.name;
         try {
-            // Realiza la búsqueda con el término de consulta
             const response = await this.genius.search(searchTerm);
             res.json(response);
         } catch (error) {
