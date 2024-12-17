@@ -1,6 +1,6 @@
 ![screenshot](./assets/gitImage/main_photo.png)
 
-# Proyecto: API para Red Social de Enlaces Personales - Backend
+# Proyecto: API TUS FAVORITAS 2024 - Backend
 
 Esta es la API que utiliza el proyecto TUS FAVORITAS 2024. Utiliza la api de genius para obtener las canciones
 
