@@ -30,10 +30,6 @@ jobs:
       - name: Pull Vercel Environment Information
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN_SERVER }}
 
-      # Build the API (opcional si tienes scripts de build específicos)
-      - name: Build Project (if applicable)
-        run: npm run build
-
       # Deploy to Vercel
       - name: Deploy API to Vercel
         run: vercel deploy --prod --token=${{ secrets.VERCEL_TOKEN_SERVER }}
