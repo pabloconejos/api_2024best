@@ -59,7 +59,6 @@ export class GeniusController {
     getLyrics = async (req, res) => {
         const {artist, song} = req.query
         const options = this.createOptions(song, artist);
-        
         try {
             const lyrics = await getLyrics(options);
             res.json({
