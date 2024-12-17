@@ -8,9 +8,11 @@ export class GeniusController {
       this.genius = genius; // Dependencia inyectada
     }
 
+    
     createOptions(title, artist) {
+        const token = process.env.AUTHTOKEN
         return {
-            apiKey: process.env.AUTHTOKEN,
+            apiKey: token,
             title: title,
             artist: artist,
             optimizeQuery: true

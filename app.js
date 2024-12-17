@@ -11,8 +11,8 @@ export const createApp = ({Genius, GeniusController}) => {
     origin: '*'
   }))
 
-  // Inicializa la dependencia de Genius con la clave API
-  const genius = new Genius(process.env.AUTHTOKEN);
+  const token = process.env.AUTHTOKEN
+  const genius = new Genius(token);
 
   // Crea el controlador con la dependencia inyectada
   const geniusController = new GeniusController({ genius });
