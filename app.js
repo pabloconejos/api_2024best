@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 import cors from 'cors'
 
-export const createApp = ({Genius, GeniusController}) => {
+export const createApp = ({Genius, GeniusController, LastFmController}) => {
   const app = express();
   app.disable('x-powered-by');
 
@@ -16,6 +16,7 @@ export const createApp = ({Genius, GeniusController}) => {
 
   // Crea el controlador con la dependencia inyectada
   const geniusController = new GeniusController({ genius });
+  const lastFmController = new LastFmController()
 
   // Define las rutas
   app.get('/', (req, res) => res.json({ okey: true }));
@@ -23,6 +24,8 @@ export const createApp = ({Genius, GeniusController}) => {
   app.get('/song', geniusController.getSong);
   app.get('/lyrics', geniusController.getLyrics);
   app.get('/cover', geniusController.getCover);
+  app.get('/last', lastFmController.searchTrack);
+  app.get('/hello', lastFmController.helloWorld);
 
 
   // Configuración del puerto
