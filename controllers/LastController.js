@@ -20,7 +20,7 @@ export class LastFmController {
             res.json(this.createObj(data))
         } catch (error) {
             console.error('Error fetching song data:', error.message);
-            res.status(500).json({ error: 'Error fetching song data' });
+            res.status(500).json({ error: 'Error fetching song data', ddd: apiKey });
         }
     };
 
